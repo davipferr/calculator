@@ -1,15 +1,45 @@
 body {
-  height: 100vh;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+span {
+  font-size: 20px;
+}
+
+.input-text {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.result-span {
+  padding: 10px;
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.h-50 {
+  height: 50%;
 }
 
 button {
+  color: white;
   width: 100px;
-  height: 30px;
+  height: 40px;
   border-radius: 5px;
+  background: none;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  font-size: 16px;
+  font-weight: bolder;
 }
 
-.input-card {
-  background-color: gray;
+.input-card-box {
+  background-color: rgba(0, 0, 0, 0.8);
   width: 500px;
   height: 100px;
   margin: 30px;
@@ -19,18 +49,28 @@ button {
   border-radius: 5px;
 }
 
-.numbers-pad {
-  background-color: gray;
+.numbers-pad-box {
+  background-color: rgba(0, 0, 0, 0.8);
   width: 500px;
-  height: 200px;
+  height: 250px;
+  justify-content: center;
+  align-content: center;
 }
 
 .numbers-pad-layout {
-  display: flex;
+  display: grid;
+  grid-template-rows: repeat(5);
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  grid-gap: 0.2em;
 }
 
 .align-center {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.iqual-btn {
+  background-color: rgba(50, 43, 191, 0.8);
 }
