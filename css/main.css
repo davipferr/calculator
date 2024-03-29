@@ -1,0 +1,36 @@
+body {
+  height: 100vh;
+}
+
+button {
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.input-card {
+  background-color: gray;
+  width: 500px;
+  height: 100px;
+  margin: 30px;
+}
+
+.round-corners {
+  border-radius: 5px;
+}
+
+.numbers-pad {
+  background-color: gray;
+  width: 500px;
+  height: 200px;
+}
+
+.numbers-pad-layout {
+  display: flex;
+}
+
+.align-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
