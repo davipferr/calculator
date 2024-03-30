@@ -1,11 +1,11 @@
-const resultBtn = document.getElementById("=");
+import removeTextContentSpace from "./util/removeTextContentSpace.js";
+
+const isEqualBtn = document.getElementById("=");
 const inputSpan = document.querySelector(".input-text");
 const resultSpan = document.querySelector(".result-span");
 
-resultBtn.addEventListener("click", function () {
-  const expression = inputSpan.textContent.replace(/\s/g, "");
-
-  mountExpression(expression);
+isEqualBtn.addEventListener("click", function () {
+  mountExpression(removeTextContentSpace(inputSpan.textContent));
 });
 
 const operationType = {
@@ -34,7 +34,6 @@ const setResultSpan = (expression, result) => {
   resultSpan.textContent = `${expression} = ${result}`;
 }
 
-
 const makeOperation = (x, y, oper, expression) => {
   const result = operationLogic[oper](x, y);
 
@@ -42,21 +41,42 @@ const makeOperation = (x, y, oper, expression) => {
 }
 
 const getOperationType = (expression) => {
+  let opers = []
   for (let i = 0; i < expression.length; i++) {
     if (operationType[expression[i]]) {
-      return operationType[expression[i]];
+      console.log(expression[i]);
+      opers.push(expression[i]);
     }
   }
+
+  return opers;
+}
+
+const splitExpression = (opers, expression) => {
+  let exp = [expression];
+  let operands = [];
+
+  opers.forEach(oper => {
+    operands = [];
+
+    exp.forEach(operand => {
+      operands = operands.concat(operand.split(oper));
+    });
+
+    exp = operands;
+  });
+
+  return operands;
 }
 
 const mountExpression = (expression) => {
-  const oper = getOperationType(expression);
-  const operands = expression.split(`${oper}`);
+  const opers = getOperationType(expression);
 
-  const x = parseFloat(operands[0]);
-  const y = parseFloat(operands[1]);
+  const operands = splitExpression(opers, expression);
 
-  makeOperation(x, y, oper, expression);
+/*   if (opers && operands) {
+    makeOperation(opers, operands);
+  } */
 }
 
 export default mountExpression
