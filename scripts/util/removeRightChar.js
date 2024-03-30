@@ -1,12 +1,15 @@
-const removeRightMostCharacter = (element) => {
-  
-  let text = element.textContent.replace(/\s/g, "");
+import removeTextContentSpace from "./removeTextContentSpace.js";
 
-  
+const removeRightMostCharacter = (element) => {
+
+  if (!element) {
+    throw new Error("Elemento inválido");
+  }
+
+  let text = removeTextContentSpace(element.textContent);
 
   if (text.length > 0) {
     text = text.slice(0, -1);
-    console.log(text);
 
     element.textContent = text;
   }
