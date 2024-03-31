@@ -41,42 +41,23 @@ const makeOperation = (x, y, oper, expression) => {
 }
 
 const getOperationType = (expression) => {
-  let opers = []
   for (let i = 0; i < expression.length; i++) {
     if (operationType[expression[i]]) {
-      console.log(expression[i]);
-      opers.push(expression[i]);
+      return expression[i];
     }
   }
-
-  return opers;
-}
-
-const splitExpression = (opers, expression) => {
-  let exp = [expression];
-  let operands = [];
-
-  opers.forEach(oper => {
-    operands = [];
-
-    exp.forEach(operand => {
-      operands = operands.concat(operand.split(oper));
-    });
-
-    exp = operands;
-  });
-
-  return operands;
 }
 
 const mountExpression = (expression) => {
-  const opers = getOperationType(expression);
+  const oper = getOperationType(expression);
+  const operands = expression.split(`${oper}`);
 
-  const operands = splitExpression(opers, expression);
+  const x = parseFloat(operands[0]);
+  const y = parseFloat(operands[1]);
 
-/*   if (opers && operands) {
-    makeOperation(opers, operands);
-  } */
+  if (oper && operands) {
+    makeOperation(x, y, oper, expression);
+  }
 }
 
 export default mountExpression
